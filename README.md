@@ -30,11 +30,11 @@ développer, ou `npm run build` pour compiler les fichiers de production.
 
 ## Generation des données
 
-Périodes : `pipenv run python manage.py load_period 2023`
-Catégories des labels : `pipenv run python manage.py load_category`
-Labels : `pipenv run python manage.py load_label`
-Status de taxations des ligne : `pipenv run python manage.py load_status_taxa_line`
-Data exemple : `pipenv run python manage.py load_data .\linegest\phoneline\management\commands\data_exemples.csv`
+ - Périodes : `pipenv run python manage.py load_period 2023`
+ - Catégories des labels : `pipenv run python manage.py load_category`
+ - Labels : `pipenv run python manage.py load_label`
+ - Status de taxations des ligne : `pipenv run python manage.py load_status_taxa_line`
+ - Data exemple : `pipenv run python manage.py load_data .\linegest\phoneline\management\commands\data_exemples.csv`
 
 => a faire dans cette ordre
 
