@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+django-extensions = "*"
+django-environ = "*"
+pillow = "*"
+crispy-bootstrap5 = "*"
+python-webpack-boilerplate = "*"
+
+[dev-packages]
+pytest = "*"
+pytest-django = "*"
+django-debug-toolbar = "*"
+psycopg2-binary = "*"
+notebook = "*"
+
+[production]
+gunicorn = "*"
+psycopg2 = "*"
+
+[requires]
+python_version = "3.11"

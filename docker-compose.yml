@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+    postgres:
+        container_name: linegest_postgres_container_40113
+        image: postgres:latest
+        working_dir: /app
+        restart: always
+        ports:
+            - "40113:5432"
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: postgres
+        volumes:
+            - "postgres_linegest_40113:/var/lib/postgresql/data"
+
+volumes:
+    postgres_linegest_40113:
