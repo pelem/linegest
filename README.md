@@ -40,20 +40,19 @@ développer, ou `npm run build` pour compiler les fichiers de production.
 
 
 ## Requêtes qui fonctionnent 
-Non de ligne pour chaque status par label de taxation : 
-Obtention de la liste des labels taxants : `list_label_taxant = Label.objects.filter(category__tag='CENTRE_TAXA')`
-Sous requêtes pour les status de ligne :
- - Ligne taxant oui `taxant_oui = Count('line_phones', filter=Q(line_phones__status_taxa_line__name='TAXANT_OUI'))`
- - Ligne taxant non `taxant_non = Count('line_phones', filter=Q(line_phones__status_taxa_line__name='TAXANT_NON'))`
- - ligne taxant nd `taxant_nd = Count('line_phones', filter=Q(line_phones__status_taxa_line__name='NOT_DEFINE'))`
+Non de ligne pour chaque status par label de taxation :
+ - Obtention de la liste des labels taxants : `list_label_taxant = Label.objects.filter(category__tag='CENTRE_TAXA')`
+ - Sous requêtes pour les status de ligne :
+   - Ligne taxant oui `taxant_oui = Count('line_phones', filter=Q(line_phones__status_taxa_line__name='TAXANT_OUI'))`
+   - Ligne taxant non `taxant_non = Count('line_phones', filter=Q(line_phones__status_taxa_line__name='TAXANT_NON'))`
+   - ligne taxant nd `taxant_nd = Count('line_phones', filter=Q(line_phones__status_taxa_line__name='NOT_DEFINE'))`
 
-Compte par label sur l'ensemble des données changées
+ - Compte par label sur l'ensemble des données changées
 `labels=Label.objects.filter(category__tag='CENTRE_TAXA').annotate(taxant_oui=taxant_oui).annotate(taxant_non=taxant_non).annotate(taxant_nd=taxant_nd)
 for label in labels:
     print(label, label.taxant_oui, label.taxant_non, label.taxant_nd)`
 
-
-Compte des données par label et par période
+ - Compte des données par label et par période
 `
 for period in Period.objects.all():
     labels=Label.objects.filter(category__tag='CENTRE_TAXA').filter(line_phones__period__period_date=period.period_date).annotate(taxant_oui=taxant_oui).annotate(taxant_non=taxant_non).annotate(taxant_nd=taxant_nd)
@@ -62,8 +61,8 @@ for period in Period.objects.all():
 `
 
 ## Requête rechercher 
-Requête permettant d'avoir une sortie du type : 
-`{'label_1':
+ - Requête permettant d'avoir une sortie du type :
+ - `{'label_1':
     {'Janvier_2023': {'taxant_oui' : 5, 'taxant_non': 1, 'taxant_nd': 1},
     'Février_2023': {'taxant_oui' : 5, 'taxant_non': 1, 'taxant_nd': 1},
     'Mars_2023': {'taxant_oui' : 5, 'taxant_non': 1, 'taxant_nd': 1},
@@ -85,4 +84,3 @@ Requête permettant d'avoir une sortie du type :
     'Mai_2023': {'taxant_oui' : 0, 'taxant_non': 4, 'taxant_nd': 0},
     'Juin_2023': {'taxant_oui' : 0, 'taxant_non': 2, 'taxant_nd': 0}}
 }`
-        
